@@ -23,3 +23,26 @@ input {
   margin: 24px 0;
   font-size: 18px;
 }
+
+input[type="submit"] {
+  background: none;
+  border: 1px solid lightgrey;
+  padding: 8px 16px;
+  border-radius: 32px;
+}
+
+a {
+  text-decoration: underline;
+  text-decoration-style: dashed;
+  color:black;
+  margin-bottom: 4px;
+  &:hover {
+    background: linear-gradient(to right, rgb(154, 173, 206), rgb(65, 69, 132));
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    text-shadow: none;
+  }
+}
