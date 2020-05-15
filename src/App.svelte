@@ -1,11 +1,18 @@
 <script>
+  import UrlBar from './components/UrlBar.svelte'
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+  <div id="url-input" class="card">
+    <UrlBar/>
+  </div>
 </main>
 
 <style>
-
+  #url-input {
+    width: 800px;
+    position: absolute;
+    top: 64px;
+    left: 128px;
+  }
 </style>

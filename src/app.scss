@@ -6,14 +6,11 @@ html, body {
   background-size: cover;
 }
 
-form {
+.card {
   background: white;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   border-radius: 16px;
-  padding: 32px;
-  position: absolute;
-  top: 256px;
-  left: 256px;
+  padding: 16px;
 }
 
 input {
