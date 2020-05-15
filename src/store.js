@@ -19,12 +19,11 @@ export const records = derived(
       const searchUrl = `${$baseUrl}/api/v2/catalog/datasets/${datasetId}/records`
       const res = await fetch(searchUrl)
       const data = await res.json()
-      console.log(data.records)
       set(data.records)
 
       return {
         set: () => {}
       }
     }
-  }
+  },
 )
