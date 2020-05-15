@@ -1,29 +1,17 @@
 <script>
+import { baseUrl, pushUrl } from '../store.js'
 
-let baseUrl
-let pushUrl
+let typeBaseUrl, typePushUrl
 
-const findId = (url) => {
-  const datasetRegexp = /api\/push\/1\.0\/([a-zA-Z0-9_-]*)(?=\/realtime)/
-  const datasetId = url.match(datasetRegexp)[1]
-  return datasetId
-}
-
-const getSearchUrl= (datasetId) => baseUrl + '/api/v2/catalog/datasets/' + datasetId + '/records'
-
-const fetchData = async (event) => {
-  event.preventDefault()
-  const datasetId = findId(pushUrl)
-  const searchUrl = getSearchUrl(datasetId)
-  const res = await fetch(searchUrl)
-  const data = await res.json()
-  console.log(data)
+const fetchData = () => {
+  $baseUrl = typeBaseUrl
+  $pushUrl = typePushUrl
 }
 </script>
 
-<form action="#" on:submit={fetchData}>
-  <input type="text" name="url" bind:value={baseUrl} placeholder="Paste base domain URL">
-  <input type="text" name="url" bind:value={pushUrl} placeholder="Paste push URL with key">
+<form action="#" on:submit|preventDefault={fetchData}>
+  <input type="text" name="url" bind:value={typeBaseUrl} placeholder="Paste base domain URL">
+  <input type="text" name="url" bind:value={typePushUrl} placeholder="Paste push URL with key">
   <input type="submit" value="Rechercher">
 </form>
 
