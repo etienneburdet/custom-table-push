@@ -10,7 +10,7 @@ html, body {
   background: white;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   border-radius: 16px;
-  padding: 16px;
+  padding: 4px 16px;
 }
 
 input {
@@ -19,7 +19,7 @@ input {
   border-bottom: 1px solid lightgrey;
   padding: 4px;
   margin: 24px 0;
-  font-size: 18px;
+  font-size: 10px;
 }
 
 input[type="submit"] {
