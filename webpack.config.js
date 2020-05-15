@@ -4,12 +4,21 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
+
 module.exports = {
+  resolve: {
+    alias: {
+      svelte: path.resolve('node_modules', 'svelte')
+    },
+    extensions: ['.mjs', '.js', '.svelte'],
+    mainFields: ['svelte', 'browser', 'module', 'main']
+  },
   mode: 'development',
   entry: {
     app: './src/app.js'
   },
   plugins: [
+    new MiniCssExtractPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'ODS Minimal template',
@@ -28,6 +37,17 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.svelte$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'svelte-loader',
+          options: {
+            emitCss: true,
+            hotReload: true
+          }
+        }
+      },
       {
         test: /\.css$/i,
         use: [
