@@ -2,6 +2,7 @@ import { writable, derived } from 'svelte/store'
 
 export const baseUrl = writable('')
 export const pushUrl = writable('')
+export const deletedRows = writable([])
 
 const findId = (url) => {
   if (url) {

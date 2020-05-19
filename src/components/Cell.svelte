@@ -12,7 +12,7 @@
     border: 1px solid lightgrey;
     padding: 0.5rem;
   }
-  
+
   .editing {
     background: rgb(148, 206, 231, 0.8);
   }

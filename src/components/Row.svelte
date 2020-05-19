@@ -1,5 +1,6 @@
 <script>
   import Cell from './Cell.svelte'
+  import { deletedRows } from '../store.js'
   export let values
 </script>
 
