@@ -1,7 +1,0 @@
-.git
-yarn.lock
-node-modules/
-yarn-error.log
-package-lock.json
-
-.now
