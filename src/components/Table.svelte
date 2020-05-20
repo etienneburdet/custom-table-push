@@ -26,22 +26,29 @@ const formRecordFromRow = (row) => {
 }
 
 const postData = async () => {
-  const baseUrl = 'https://eburdet.opendatasoft.com/api/management/v2/datasets'
-  const api = '?apikey=5035b2640587b7f1fd96b22322b2c42becb8056fe586f7e9a544d7ca'
-  const q = '/restaurants/resorces'
+
   const tableRows = [...document.querySelectorAll('tbody tr')]
   const tableRecords = tableRows.map(formRecordFromRow)
-  try {
-    const res = await fetch(baseUrl + q, {
-      mode: 'no-cors',
-      headers: {
-        Authorization: 'Bearer 5035b2640587b7f1fd96b22322b2c42becb8056fe586f7e9a544d7ca'
-      }
-    })
-    console.log(res)
-  } catch (error) {
-    console.log('Erreur', error)
+  const contents = {
+    "content": "language,phrase\nEnglish,Hello World\nEsperanto,Saluton mondo\n",
+    "mimetype": "text/csv",
+    "filename": "data.csv"
   }
+
+  const apikey = '?apikey=bf362c7d697b2767b15111e8d9a44ea3a4a94cccecedcfc5fa4e1cf6'
+  const baseUrl = 'https://eburdet.opendatasoft.com/api/management/v2/'
+  const query = 'files'
+
+  const res = await fetch(baseUrl + query + apikey, {
+    body: "{\"content\": \"language,phrasenEnglish,Hello World\\nEsperanto,Saluton mondo\\n\", \"mimetype\": \"text/csv\", \"filename\": \"data.csv\"}",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    method: "POST"
+  })
+  console.log(res)
+  const data = await res.json()
+  console.log(data)
 }
 </script>
 
