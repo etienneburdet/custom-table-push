@@ -14,6 +14,7 @@ let rows = [
 //     rows = $records.map(record => Object.values(record.record.fields))
 //   }
 // }
+
 const matchCellToHeader = (record, cell, index) => {
   if (index > 1 ) { record[headers[index - 2]] = cell.innerText }
   return record
@@ -26,26 +27,11 @@ const formRecordFromRow = (row) => {
 }
 
 const postData = async () => {
-
+  console.log('send data')
   const tableRows = [...document.querySelectorAll('tbody tr')]
   const tableRecords = tableRows.map(formRecordFromRow)
-  const contents = {
-    "content": "language,phrase\nEnglish,Hello World\nEsperanto,Saluton mondo\n",
-    "mimetype": "text/csv",
-    "filename": "data.csv"
-  }
 
-  const apikey = '?apikey=bf362c7d697b2767b15111e8d9a44ea3a4a94cccecedcfc5fa4e1cf6'
-  const baseUrl = 'https://eburdet.opendatasoft.com/api/management/v2/'
-  const query = 'files'
-
-  const res = await fetch(baseUrl + query + apikey, {
-    body: "{\"content\": \"language,phrasenEnglish,Hello World\\nEsperanto,Saluton mondo\\n\", \"mimetype\": \"text/csv\", \"filename\": \"data.csv\"}",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    method: "POST"
-  })
+  const res = await fetch('/api/forward')
   console.log(res)
   const data = await res.json()
   console.log(data)
@@ -69,7 +55,7 @@ const postData = async () => {
   </tbody>
 </table>
 
-<button on:click={postData}>Save !</button>
+<input type="submit" value="Save !" on:click={postData}>
 
 <style>
   table {
@@ -79,7 +65,7 @@ const postData = async () => {
     border-collapse: collapse;
   }
 
-  button {
+  input[type="submit"]{
     background: none;
     border: 2px solid black;
     border-radius: 2px;

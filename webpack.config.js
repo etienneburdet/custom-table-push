@@ -22,7 +22,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'ODS Minimal template',
-      template: 'public/index.html'
+      template: 'template/index.html'
     }),
     new CopyPlugin(
       [
@@ -33,7 +33,7 @@ module.exports = {
   devtool: 'inline-source-map',
   output: {
     filename: '[name].[contenthash].bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'public')
   },
   module: {
     rules: [

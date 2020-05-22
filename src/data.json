@@ -1,0 +1,14 @@
+{
+  [
+    {
+      nom: 'Berberhygge',
+      commentaire: 'couscous dannois',
+      note: 5
+    },
+    {
+      nom: 'Kleen Kanteen',
+      commentaire: 'hipster',
+      note: 4
+    }
+  ]
+}

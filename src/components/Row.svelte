@@ -9,7 +9,7 @@
     <img src="../img/trash-2.svg" alt="trash" width="14px">
   </td>
   {#each values as value}
-    <Cell value={value} />
+    <Cell value={value}/>
   {/each}
 </tr>
 
