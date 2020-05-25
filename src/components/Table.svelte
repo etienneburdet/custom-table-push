@@ -1,5 +1,6 @@
 <script>
 import { records } from '../store.js'
+import { postData } from './ExtractAndPostData.svelte'
 import Row from './Row.svelte'
 
 let headers = ['Nom', 'Commentaire', 'Note']
@@ -14,28 +15,6 @@ let rows = [
 //     rows = $records.map(record => Object.values(record.record.fields))
 //   }
 // }
-
-const matchCellToHeader = (record, cell, index) => {
-  if (index > 1 ) { record[headers[index - 2]] = cell.innerText }
-  return record
-}
-
-const formRecordFromRow = (row) => {
-  const cells = [...row.childNodes]
-  const rowRecord = cells.reduce(matchCellToHeader,{})
-  return rowRecord
-}
-
-const postData = async () => {
-  console.log('send data')
-  const tableRows = [...document.querySelectorAll('tbody tr')]
-  const tableRecords = tableRows.map(formRecordFromRow)
-
-  const res = await fetch('/api/forward')
-  console.log(res)
-  const data = await res.json()
-  console.log(data)
-}
 </script>
 
 <table>
