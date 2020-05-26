@@ -1,10 +1,10 @@
 <script>
-  export let value
+  export let cell
   let editing
 </script>
 
 <td contenteditable on:focus={e=> editing = true} on:blur={e=> editing = false} class:editing>
-  {value}
+  {cell}
 </td>
 
 <style>

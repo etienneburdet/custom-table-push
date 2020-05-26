@@ -1,15 +1,19 @@
 <script>
   import Cell from './Cell.svelte'
-  import { deletedRows } from '../store.js'
-  export let values
+  import { rows } from '../store.js'
+  export let row
+
+  const deleteRow = () => {
+    $rows = $rows.filter( el => el !== row)
+  }
 </script>
 
 <tr>
-  <td class="delete-button">
+  <td class="delete-button" on:click={deleteRow}>
     <img src="../img/trash-2.svg" alt="trash" width="14px">
   </td>
-  {#each values as value}
-    <Cell value={value}/>
+  {#each row as cell}
+    <Cell cell={cell}/>
   {/each}
 </tr>
 
