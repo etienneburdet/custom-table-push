@@ -2,7 +2,12 @@ import { writable, derived } from 'svelte/store'
 
 export const baseUrl = writable('')
 export const pushUrl = writable('')
-export const deletedRows = writable([])
+export const headers = writable(['Nom', 'Commentaire', 'Note'])
+export const rows = writable([
+  ['Berberhygge', 'couscous dannois', 5],
+  ['Kleen Canteen', 'hipsters', 4]
+])
+
 
 const findId = (url) => {
   if (url) {

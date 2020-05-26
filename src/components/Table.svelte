@@ -1,13 +1,8 @@
 <script>
-import { records } from '../store.js'
+import { rows, headers } from '../store.js'
 import { postData } from './ExtractAndPostData.svelte'
 import Row from './Row.svelte'
-
-let headers = ['Nom', 'Commentaire', 'Note']
-let rows = [
-  ['Berberhygge', 'couscous dannois', 5],
-  ['Kleen Canteen', 'hipsters', 4]
-]
+import AddRow from './AddRow.svelte'
 
 // $: {
 //   if($records) {
@@ -22,15 +17,16 @@ let rows = [
   <thead>
     <tr>
       <th></th>
-      {#each headers as header}
+      {#each $headers as header}
         <th>{header}</th>
       {/each}
     </tr>
   </thead>
   <tbody>
-    {#each rows as row}
+    {#each $rows as row}
       <Row values={row}/>
     {/each}
+    <AddRow/>
   </tbody>
 </table>
 
