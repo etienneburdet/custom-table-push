@@ -1,10 +1,14 @@
 <script>
   import { headers, rows } from '../store.js'
+
+  const addRow = () => {
+    $rows = [...$rows, ['nom', 'commentaire', 'note']]
+  }
 </script>
 
 <tr>
   <td></td>
-  <td colspan="{$headers.length}" class="add-row" on:click> + </td>
+  <td colspan="{$headers.length}" class="add-row" on:click={addRow}> + </td>
 </tr>
 
 <style>
