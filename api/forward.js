@@ -5,8 +5,16 @@ const baseUrl = 'https://eburdet.opendatasoft.com/api/management/v2/'
 const query = 'files'
 
 const pushDataToServer = async (data) => {
-  console.log('sending', data)
-  const res = await fetch(baseUrl + query + apikey)
+  const res = await fetch(baseUrl + query + apikey, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "content": JSON.stringify(data),
+      "mimetype": "application/json",
+      "filename": "data.json"})
+  })
   console.log(res)
   const json = await res.json()
   return json
@@ -14,6 +22,6 @@ const pushDataToServer = async (data) => {
 
 export default async (reqFromClient, resToClient) => {
   const data = reqFromClient.body
-  const json = await pushDataToServer(data)
+  const resFromServ = await pushDataToServer(data)
   resToClient.json(json)
 }
