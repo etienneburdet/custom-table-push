@@ -2,10 +2,9 @@ import fetch from 'node-fetch'
 
 const apikey = '?apikey=bf362c7d697b2767b15111e8d9a44ea3a4a94cccecedcfc5fa4e1cf6'
 const baseUrl = 'https://eburdet.opendatasoft.com/api/management/v2/'
-const query = 'files'
 
-const pushDataToServer = async (data) => {
-  const res = await fetch(baseUrl + query + apikey, {
+const pushFileToServer = async (data) => {
+  const resFromServ = await fetch(baseUrl + 'files' + apikey, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -15,14 +14,40 @@ const pushDataToServer = async (data) => {
       "mimetype": "application/json",
       "filename": "restaurant.json"})
   })
-  console.log(res)
-  const json = await res.json()
-  return json
+  const json = await resFromServ.json()
+  const fileUrl = json.url
+  return fileUrl
+}
+
+const getResourceUid = async () => {
+  const resFromServ = await fetch(baseUrl + 'datasets/da_qf8jze/resources' + apikey)
+  const json = await resFromServ.json()
+  const resourceUid = await json[0].resource_uid
+  return resourceUid
+}
+
+const updateResource = async (resourceUid, fileUrl) => {
+  const resFromServ = await fetch(baseUrl + 'datasets/da_qf8jze/resources/' + resourceUid + apikey, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "url": fileUrl,
+      "title": "Restaurants",
+      "type": "jsonfile",
+      "params": {},
+      "credentials": {}
+    })
+  })
+  return resFromServ
 }
 
 export default async (reqFromClient, resToClient) => {
   const data = reqFromClient.body
-  const resFromServ = await pushDataToServer(data)
-  const fileUrl = await resFromServ.url
-  resToClient.json(fileUrl)
+  const resourceUid = await getResourceUid()
+  const fileUrl = await pushFileToServer(data)
+  const resFromServ = await updateResource(resourceUid, fileUrl)
+  const json = await resFromServ.json()
+  resToClient.json(json)
 }

@@ -1,14 +1,12 @@
-{
-  [
-    {
-      nom: 'Berberhygge',
-      commentaire: 'couscous dannois',
-      note: 5
-    },
-    {
-      nom: 'Kleen Kanteen',
-      commentaire: 'hipster',
-      note: 4
-    }
-  ]
-}
+[
+ {
+     "nom": "Berberhygge",
+     "Commentaire": "Couscous Dannois",
+     "note": "5"
+ },
+ {
+     "nom": "Kleen Canteen",
+     "Commentaire": "hipsters",
+     "note": "3"
+ }
+]
