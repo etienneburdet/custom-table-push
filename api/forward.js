@@ -13,7 +13,7 @@ const pushDataToServer = async (data) => {
     body: JSON.stringify({
       "content": JSON.stringify(data),
       "mimetype": "application/json",
-      "filename": "data.json"})
+      "filename": "restaurant.json"})
   })
   console.log(res)
   const json = await res.json()
@@ -23,5 +23,6 @@ const pushDataToServer = async (data) => {
 export default async (reqFromClient, resToClient) => {
   const data = reqFromClient.body
   const resFromServ = await pushDataToServer(data)
-  resToClient.json(json)
+  const fileUrl = await resFromServ.url
+  resToClient.json(fileUrl)
 }
