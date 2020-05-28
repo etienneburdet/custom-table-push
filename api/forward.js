@@ -15,7 +15,7 @@ const pushFileToServer = async (data) => {
       "filename": "restaurant.json"})
   })
   const json = await resFromServ.json()
-  const fileUrl = json.url
+  const fileUrl = await json.url
   return fileUrl
 }
 
@@ -34,12 +34,14 @@ const updateResource = async (resourceUid, fileUrl) => {
     },
     body: JSON.stringify({
       "url": fileUrl,
-      "title": "Restaurants",
+      "title": "restaurants.json",
       "type": "jsonfile",
-      "params": {},
-      "credentials": {}
+      "params": {
+        "json_root": ""
+      },
     })
   })
+  console.log(resFromServ)
   return resFromServ
 }
 
