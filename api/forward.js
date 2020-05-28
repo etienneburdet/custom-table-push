@@ -4,7 +4,6 @@ const apikey = '?apikey=' + process.env.API_KEY
 const baseUrl = 'https://eburdet.opendatasoft.com/api/management/v2/'
 
 const pushFileToServer = async (data) => {
-  console.log(data)
   const resFromServ = await fetch(baseUrl + 'files' + apikey, {
     method: 'POST',
     headers: {
