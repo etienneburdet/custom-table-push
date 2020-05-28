@@ -3,14 +3,6 @@ import { rows, headers } from '../store.js'
 import { postData } from './postData.svelte'
 import Row from './Row.svelte'
 import AddRow from './AddRow.svelte'
-
-// $: {
-//   if($records) {
-//     headers = Object.keys($records[0].record.fields)
-//     rows = $records.map(record => Object.values(record.record.fields))
-//   }
-// }
-
 </script>
 
 <table>

@@ -54,7 +54,6 @@ const publishDataset = async () => {
 
 export default async (reqFromClient, resToClient) => {
   const data = reqFromClient.body
-  console.log("data",data)
   const resourceUid = await getResourceUid()
   const fileUrl = await pushFileToServer(data)
   await updateResource(resourceUid, fileUrl)

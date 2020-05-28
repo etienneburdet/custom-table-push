@@ -11,7 +11,6 @@
     deleteRow()
     row[cell[0]] = cell[1]
     $rows = [...$rows, row]
-    console.log($rows)
   }
 </script>
 
