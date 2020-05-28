@@ -6,14 +6,21 @@
   const deleteRow = () => {
     $rows = $rows.filter( el => el !== row)
   }
+
+  const updateRow = (cell) => {
+    deleteRow()
+    row[cell[0]] = cell[1]
+    $rows = [...$rows, row]
+    console.log($rows)
+  }
 </script>
 
 <tr>
   <td class="delete-button" on:click={deleteRow}>
     <img src="../img/trash-2.svg" alt="trash" width="14px">
   </td>
-  {#each row as cell}
-    <Cell cell={cell}/>
+  {#each Object.entries(row) as cell}
+    <Cell bind:cellContent={cell[1]} on:blur={updateRow(cell)}/>
   {/each}
 </tr>
 

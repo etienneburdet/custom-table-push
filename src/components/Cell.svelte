@@ -1,10 +1,14 @@
 <script>
-  export let cell
+  export let cellContent
   let editing
 </script>
 
-<td contenteditable on:focus={e=> editing = true} on:blur={e=> editing = false} class:editing>
-  {cell}
+<td contenteditable
+  bind:textContent={cellContent}
+  on:focus={e => editing = true}
+  on:blur={e => editing = false}
+  on:blur
+  class:editing>
 </td>
 
 <style>

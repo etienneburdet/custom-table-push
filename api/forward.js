@@ -4,6 +4,7 @@ const apikey = '?apikey=bf362c7d697b2767b15111e8d9a44ea3a4a94cccecedcfc5fa4e1cf6
 const baseUrl = 'https://eburdet.opendatasoft.com/api/management/v2/'
 
 const pushFileToServer = async (data) => {
+  console.log(data)
   const resFromServ = await fetch(baseUrl + 'files' + apikey, {
     method: 'POST',
     headers: {
@@ -41,15 +42,23 @@ const updateResource = async (resourceUid, fileUrl) => {
       },
     })
   })
-  console.log(resFromServ)
+  return resFromServ
+}
+
+const publishDataset = async () => {
+  const resFromServ = await fetch( baseUrl + 'datasets/da_qf8jze/publish' + apikey, {
+    method: 'PUT'
+  })
   return resFromServ
 }
 
 export default async (reqFromClient, resToClient) => {
   const data = reqFromClient.body
+  console.log("data",data)
   const resourceUid = await getResourceUid()
   const fileUrl = await pushFileToServer(data)
-  const resFromServ = await updateResource(resourceUid, fileUrl)
+  await updateResource(resourceUid, fileUrl)
+  const resFromServ = await publishDataset()
   const json = await resFromServ.json()
   resToClient.json(json)
 }

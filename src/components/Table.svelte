@@ -1,6 +1,6 @@
 <script>
 import { rows, headers } from '../store.js'
-import { postData } from './ExtractAndPostData.svelte'
+import { postData } from './postData.svelte'
 import Row from './Row.svelte'
 import AddRow from './AddRow.svelte'
 
@@ -10,6 +10,7 @@ import AddRow from './AddRow.svelte'
 //     rows = $records.map(record => Object.values(record.record.fields))
 //   }
 // }
+
 </script>
 
 <table>
@@ -30,7 +31,7 @@ import AddRow from './AddRow.svelte'
   </tbody>
 </table>
 
-<input type="submit" value="Save !" on:click={postData}>
+<input type="submit" value="Save !" on:click={postData($rows)}>
 
 <style>
   table {
