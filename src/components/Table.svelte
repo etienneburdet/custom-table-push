@@ -1,6 +1,6 @@
 <script>
 import { rows, headers } from '../store.js'
-import { postData } from './postData.svelte'
+import { postData } from '../helpers/odsData.js'
 import Row from './Row.svelte'
 import AddRow from './AddRow.svelte'
 </script>

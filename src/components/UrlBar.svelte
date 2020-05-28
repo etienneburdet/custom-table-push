@@ -1,18 +1,19 @@
 <script>
-import { baseUrl, pushUrl } from '../store.js'
+import { getData } from '../helpers/odsData.js'
+import { rows, headers } from '../store.js'
 
-let typeBaseUrl, typePushUrl
+let typedUrl
 
-const fetchData = () => {
-  $baseUrl = typeBaseUrl
-  $pushUrl = typePushUrl
+const getLatestData = async () => {
+  const url = 'https://eburdet.opendatasoft.com/api/v2/catalog/datasets/restaurants/records' //hardcode for test
+  $rows = await getData(url)
+  $headers = Object.keys($rows[0])
 }
 </script>
 
-<form action="#" on:submit|preventDefault={fetchData}>
-  <input type="text" name="url" bind:value={typeBaseUrl} placeholder="Paste base domain URL">
-  <input type="text" name="url" bind:value={typePushUrl} placeholder="Paste push URL with key">
-  <input type="submit" value="Rechercher">
+<form action="#" on:submit|preventDefault={getLatestData}>
+  <input type="text" name="url" bind:value={typedUrl} placeholder="Paste dataset Url">
+  <input type="submit" value="Get latest data">
 </form>
 
 <style>
