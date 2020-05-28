@@ -5,5 +5,6 @@ yarn-error.log
 package-lock.json
 
 .now
+.env
 
 .vercel

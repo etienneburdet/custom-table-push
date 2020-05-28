@@ -1,6 +1,6 @@
 import fetch from 'node-fetch'
 
-const apikey = '?apikey=bf362c7d697b2767b15111e8d9a44ea3a4a94cccecedcfc5fa4e1cf6'
+const apikey = '?apikey=' + process.env.API_KEY
 const baseUrl = 'https://eburdet.opendatasoft.com/api/management/v2/'
 
 const pushFileToServer = async (data) => {
