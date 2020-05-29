@@ -1,6 +1,6 @@
 .git
 yarn.lock
-/node-modules
+/node_modules
 yarn-error.log
 package-lock.json
 
