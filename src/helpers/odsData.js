@@ -1,14 +1,18 @@
 /* global fetch */
 const postData = async (rows) => {
-  const res = await fetch('/api/forward', {
-    method: 'POST',
-    headers: {
-      'Content-type': 'application/json'
-    },
-    body: JSON.stringify(rows)
-  })
-  const data = await res.json()
-  console.log('Posted :', data)
+  if (rows.length > 1) {
+    const res = await fetch('/api/forward', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(rows)
+    })
+    const data = await res.json()
+    console.log('Posted :', data)
+  } else {
+    console.error('Empty dataset')
+  }
 }
 
 const getData = async (url) => {
