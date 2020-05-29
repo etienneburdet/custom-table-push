@@ -2,8 +2,7 @@
   import { headers, rows } from '../store.js'
 
   const addRow = () => {
-    const newRow = { nom: 'Nom', commentaire: 'commentaire', note: 0 }
-    $rows = [...$rows, newRow]
+    $rows = [...$rows, $rows[$rows.length - 1]]
   }
 </script>
 

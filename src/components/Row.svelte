@@ -1,6 +1,6 @@
 <script>
   import Cell from './Cell.svelte'
-  import { rows } from '../store.js'
+  import { rows, headers } from '../store.js'
   export let row
 
   const deleteRow = () => {
