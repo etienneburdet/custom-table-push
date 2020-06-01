@@ -10,11 +10,13 @@ const pushFileToServer = async (data) => {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      "content": JSON.stringify(data),
-      "mimetype": "application/json",
-      "filename": "restaurant.json"})
+      content: JSON.stringify(data),
+      mimetype: 'application/json',
+      filename: 'restaurants.json'
+    })
   })
   const json = await resFromServ.json()
+  console.log('add file', json)
   const fileUrl = await json.url
   return fileUrl
 }

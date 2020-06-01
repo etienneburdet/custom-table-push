@@ -16,8 +16,8 @@ import AddRow from './AddRow.svelte'
     </tr>
   </thead>
   <tbody>
-    {#each $rows as row}
-      <Row row={row}/>
+    {#each $rows as row, index}
+      <Row row={row} index={index}/>
     {/each}
     <AddRow/>
   </tbody>

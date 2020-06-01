@@ -1,6 +1,20 @@
 /* global fetch */
+
+// const fakerows = [
+//  {
+//      "name": "Agra Express",
+//      "origin": "Agra Cantt",
+//      "destination": "New Delhi"
+//  },
+//  {
+//      "name": "Gour Express",
+//      "origin": "Balurghat",
+//      "destination": "Sealdah"
+//  }
+// ]
+
 const postData = async (rows) => {
-  if (rows.length > 1) {
+  if (rows.length > 0) {
     const res = await fetch('/api/forward', {
       method: 'POST',
       headers: {

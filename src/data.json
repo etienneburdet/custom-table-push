@@ -1,12 +1,1 @@
-[
- {
-     "nom": "Berberhygge",
-     "Commentaire": "Couscous Dannois",
-     "note": "5"
- },
- {
-     "nom": "Kleen Canteen",
-     "Commentaire": "hipsters",
-     "note": "3"
- }
-]
+[{"note":"5","nom":"Berberhygge","commentaire":"Couscous Dannois"},{"note":"8","nom":"Va et vient","commentaire":"Brasserie d'angle"},{"note":"8","nom":"Test","commentaire":"Brasserie d'angle"}]

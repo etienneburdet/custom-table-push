@@ -2,7 +2,8 @@
   import { headers, rows } from '../store.js'
 
   const addRow = () => {
-    $rows = [...$rows, $rows[$rows.length - 1]]
+    const newLine = Object.assign({}, $rows[$rows.length - 1])
+    $rows = [...$rows, newLine]
   }
 </script>
 
